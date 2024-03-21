@@ -42,7 +42,7 @@ export const seoPlugin =
 
           label: 'Meta-Daten & Suchmaschinenoptimierung',
           admin: {
-            initCollapsed: true,
+            initCollapsed: false,
             description: {
               de: 'Hier können Sie die Meta-Daten für Suchmaschinenoptimierung bearbeiten. Diese Daten werden von Suchmaschinen wie Google verwendet, um Ihre Website zu indizieren.',
               en: 'Here you can edit the meta data for search engine optimization. This data is used by search engines like Google to index your website.',
