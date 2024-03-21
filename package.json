@@ -44,5 +44,11 @@
     "prettier": "^2.7.1",
     "react": "^18.0.0",
     "typescript": "^4.8.4"
-  }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ]
 }
