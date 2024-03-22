@@ -41,8 +41,11 @@ export const seoPlugin =
       const pluginFields: Field[] = [
         {
           type: 'collapsible',
-
-          label: 'Meta-Daten & Suchmaschinenoptimierung',
+          label: {
+            de: 'Meta-Daten & Suchmaschinenoptimierung',
+            en: 'Meta Data & Search Engine Optimization',
+            fr: 'Méta-données et optimisation pour les moteurs de recherche',
+          },
           admin: {
             initCollapsed: false,
             description: {
@@ -60,6 +63,7 @@ export const seoPlugin =
               label: {
                 de: 'SEO-Titel',
                 en: 'SEO Title',
+                fr: 'Titre SEO',
               },
               admin: {
                 description: {
@@ -87,7 +91,11 @@ export const seoPlugin =
             {
               type: 'textarea',
               name: 'seoDescription',
-              label: 'SEO Description',
+              label: {
+                de: 'SEO-Beschreibung',
+                en: 'SEO Description',
+                fr: 'Description SEO',
+              },
               minLength: 50,
               required: true,
               admin: {
