@@ -37,7 +37,9 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  plugins: [seoPlugin({ enabled: true, collections: ['examples'], generateSEOTitleFrom: 'test' })],
+  plugins: [
+    seoPlugin({ enabled: true, collections: ['examples'], generateSEOTitleFrom: 'someField' }),
+  ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
