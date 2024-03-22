@@ -1,14 +1,7 @@
 import type { Config, Plugin } from 'payload/config'
 
 import { defaultPluginOptions, PluginOptionsTypes } from './types'
-import {
-  CollapsibleField,
-  Field,
-  FieldHook,
-  TextareaField,
-  TextField,
-  UploadField,
-} from 'payload/dist/exports/types'
+import { Field, TextareaField, TextField, UploadField } from 'payload/dist/exports/types'
 import deepmerge from './utils/deepmerge'
 import TitleStatus from './components/TitleStatus'
 import DescriptionStatus from './components/DescriptionStatus'
@@ -77,7 +70,6 @@ export const seoPlugin =
                   Label: TitleStatus,
                 },
               },
-              //required: true,
               hooks: {
                 beforeValidate: [
                   ({ value, data }) => {
