@@ -23,6 +23,8 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    * @default 'title'
    */
   generateSEOTitleFrom: 'title',
+
+  mediaCollection: 'medias',
 }
 
 export interface PluginOptionsTypes {
@@ -43,6 +45,12 @@ export interface PluginOptionsTypes {
    * @default 'title'
    */
   generateSEOTitleFrom: string
+
+  /**
+   * The media collection to use for the SEO image
+   * @default 'medias'
+   */
+  mediaCollection: string
 }
 
 export interface NewCollectionTypes {}

@@ -2,6 +2,7 @@ import { buildConfig } from 'payload/config'
 import path from 'path'
 import Users from './collections/Users'
 import Examples from './collections/Examples'
+import Media from './collections/Media'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { slateEditor } from '@payloadcms/richtext-slate'
@@ -30,7 +31,7 @@ export default buildConfig({
     },
   },
   editor: slateEditor({}),
-  collections: [Examples, Users],
+  collections: [Examples, Users, Media],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -38,7 +39,12 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   plugins: [
-    seoPlugin({ enabled: true, collections: ['examples'], generateSEOTitleFrom: 'someField' }),
+    seoPlugin({
+      enabled: true,
+      collections: ['examples'],
+      generateSEOTitleFrom: 'someField',
+      mediaCollection: 'media',
+    }),
   ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,

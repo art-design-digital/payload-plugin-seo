@@ -7,6 +7,7 @@ import {
   FieldHook,
   TextareaField,
   TextField,
+  UploadField,
 } from 'payload/dist/exports/types'
 import deepmerge from './utils/deepmerge'
 import TitleStatus from './components/TitleStatus'
@@ -109,6 +110,23 @@ export const seoPlugin =
                 },
               },
             } as TextareaField,
+            {
+              type: 'upload',
+              name: 'seoImage',
+              label: {
+                de: 'SEO-Bild',
+                en: 'SEO Image',
+                fr: 'Image SEO',
+              },
+              relationTo: pluginOptions.mediaCollection,
+              admin: {
+                description: {
+                  de: 'Das SEO-Bild ist das Bild, das in den Suchergebnissen angezeigt wird oder wenn Ihre Seite geteilt wird. Es sollte 1200x630 Pixel groß sein.',
+                  en: 'The SEO image is the image that appears in the search results or when your page is shared. It should be 1200x630 pixels in size.',
+                  fr: "L'image SEO est l'image qui apparaît dans les résultats de recherche ou lorsque votre page est partagée. Elle doit mesurer 1200x630 pixels.",
+                },
+              },
+            } as UploadField,
           ],
         },
       ]

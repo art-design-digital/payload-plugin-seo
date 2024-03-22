@@ -51,5 +51,7 @@
     "README.md",
     "package.json"
   ],
-  "dependencies": {}
+  "dependencies": {
+    "react-icons": "^5.0.1"
+  }
 }
