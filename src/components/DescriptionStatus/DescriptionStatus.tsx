@@ -28,7 +28,12 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
       : '#d63031'
 
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
       <Label label={label} required={required} htmlFor={htmlFor} />
       <div className="progress-wrapper">
         <div className="progress-wrapper__inner">
@@ -44,7 +49,7 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

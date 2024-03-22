@@ -1,9 +1,15 @@
 import React from 'react'
 
-import { useField } from 'payload/components/forms'
+import { Label, useField } from 'payload/components/forms'
 import './styles.scss'
 
-const TitleStatus: React.FC = () => {
+type TitleStatusProps = {
+  htmlFor: string
+  label: string
+  required: boolean
+}
+
+const TitleStatus = ({ htmlFor, label, required }: TitleStatusProps) => {
   const { value, setValue }: { value: string; setValue: (value: string) => void } = useField({
     path: 'seoTitle',
   })
@@ -22,17 +28,25 @@ const TitleStatus: React.FC = () => {
       : '#d63031'
 
   return (
-    <div className="progress-wrapper">
-      <div className="progress-wrapper__inner">
-        <span className="progress-wrapper__text">{currentLength} von 50-60 Zeichen</span>
-        <div className="progress-wrapper__bar">
-          <span
-            className="progress-wrapper__bar__fill"
-            style={{
-              width: `${currentLengthPercentage}%`,
-              backgroundColor: fillColor,
-            }}
-          ></span>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Label label={label} required={required} htmlFor={htmlFor} />
+      <div className="progress-wrapper">
+        <div className="progress-wrapper__inner">
+          <span className="progress-wrapper__text">{currentLength} von 50-60 Zeichen</span>
+          <div className="progress-wrapper__bar">
+            <span
+              className="progress-wrapper__bar__fill"
+              style={{
+                width: `${currentLengthPercentage}%`,
+                backgroundColor: fillColor,
+              }}
+            ></span>
+          </div>
         </div>
       </div>
     </div>

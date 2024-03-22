@@ -72,7 +72,7 @@ export const seoPlugin =
                   fr: "Le titre SEO est le titre qui apparaît dans les résultats de recherche et également dans l'onglet du navigateur.",
                 },
                 components: {
-                  afterInput: [TitleStatus],
+                  Label: TitleStatus,
                 },
               },
               //required: true,
