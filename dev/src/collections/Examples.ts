@@ -13,6 +13,7 @@ const Examples: CollectionConfig = {
     {
       name: 'someField',
       type: 'text',
+      localized: true,
     },
   ],
 }

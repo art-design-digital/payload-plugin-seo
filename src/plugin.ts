@@ -61,6 +61,7 @@ export const seoPlugin =
               name: 'seoTitle',
               required: true,
               minLength: 10,
+              localized: true,
               label: {
                 de: 'SEO-Titel',
                 en: 'SEO Title',
@@ -98,6 +99,7 @@ export const seoPlugin =
                 fr: 'Description SEO',
               },
               minLength: 50,
+              localized: true,
               required: true,
               admin: {
                 description: {
