@@ -1,10 +1,11 @@
 import type { Config, Plugin } from 'payload/config'
 
 import { defaultPluginOptions, PluginOptionsTypes } from './types'
-import { Field, TextareaField, TextField, UploadField } from 'payload/dist/exports/types'
+import { Field, TextareaField, TextField, UIField, UploadField } from 'payload/dist/exports/types'
 import deepmerge from './utils/deepmerge'
 import TitleStatus from './components/TitleStatus'
 import DescriptionStatus from './components/DescriptionStatus'
+import SEOPreview from './components/SEOPreview'
 
 type PluginType = (userPluginOptions: PluginOptionsTypes) => Plugin
 
@@ -39,6 +40,7 @@ export const seoPlugin =
             de: 'Meta-Daten & Suchmaschinenoptimierung',
             en: 'Meta Data & Search Engine Optimization',
             fr: 'Méta-données et optimisation pour les moteurs de recherche',
+            es: 'Metadatos y optimización para motores de búsqueda',
           },
           admin: {
             initCollapsed: false,
@@ -49,6 +51,16 @@ export const seoPlugin =
             },
           },
           fields: [
+            {
+              type: 'ui',
+              name: 'seoPreview',
+
+              admin: {
+                components: {
+                  Field: SEOPreview,
+                },
+              },
+            } as UIField,
             {
               type: 'text',
               name: 'seoTitle',

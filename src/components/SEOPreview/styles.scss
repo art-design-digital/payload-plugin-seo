@@ -1,0 +1,56 @@
+$max-width-desktop: 652px;
+$google-favicon-border-color: #9aa0a6;
+$google-sitename-color: #dadce0;
+$google-url-color: #bdc1c6;
+
+.seo-preview {
+  margin-bottom: var(--spacing-field);
+  .actions {
+    width: max-content;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--theme-elevation-150);
+    button {
+      border-radius: 0;
+      border: none;
+      background-color: transparent;
+      padding: 8px;
+      cursor: pointer;
+
+      &.active {
+        background-color: var(--color-base-800);
+        color: var(--color-white);
+      }
+
+      &:not(:first-child) {
+        margin-left: -1px;
+        border-left: 1px solid var(--theme-elevation-150);
+      }
+    }
+  }
+
+  .content {
+    font-family: Arial, sans-serif;
+    padding: 1rem;
+    border: 1px solid var(--theme-elevation-150);
+    width: max-content;
+    max-width: 100%;
+
+    &.desktop{
+      .inner-body {
+        width: 652px;
+      }
+    }
+
+    &.mobile{
+      .inner-body {
+        width: 382px;
+      }
+    }
+
+
+  }
+}
