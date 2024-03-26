@@ -52,5 +52,3 @@ export interface PluginOptionsTypes {
    */
   mediaCollection: string
 }
-
-export interface NewCollectionTypes {}
