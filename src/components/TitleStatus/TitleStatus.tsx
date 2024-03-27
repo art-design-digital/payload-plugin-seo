@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { Label, useField } from 'payload/components/forms'
 import './styles.scss'
