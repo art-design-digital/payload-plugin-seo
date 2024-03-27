@@ -2,8 +2,6 @@ import React from 'react'
 import { GoDeviceDesktop, GoDeviceMobile } from 'react-icons/go'
 import './styles.scss'
 import { getSiblingData, useAllFormFields } from 'payload/components/forms'
-import Truncate from 'react-truncate'
-import TextTruncate from 'react-text-truncate'
 import TruncateMarkup from 'react-truncate-markup'
 
 const SEOPreview = () => {
