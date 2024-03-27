@@ -5,15 +5,16 @@ import { getSiblingData, useAllFormFields } from 'payload/components/forms'
 import TruncateMarkup from 'react-truncate-markup'
 
 const SEOPreview = () => {
-  // Generate todays date in format dd.mm.yyyy
-  const today = new Date()
-  const dd = String(today.getDate()).padStart(2, '0')
-  const mm = String(today.getMonth() + 1).padStart(2, '0') //January is 0!
-  const yyyy = today.getFullYear()
-  const formattedDate = dd + '.' + mm + '.' + yyyy
-
   const [fields] = useAllFormFields()
   const siblingData = getSiblingData(fields, 'seoTitle')
+
+  // get siblingData.updatedAt which is in format like "2024-03-27T20:32:47.101Z"
+  // and format it to "27.03.2024"
+  const createdAt = new Date(siblingData.createdAt)
+  const createdDay = String(createdAt.getDate()).padStart(2, '0')
+  const createdMonth = String(createdAt.getMonth() + 1).padStart(2, '0')
+  const createdYear = createdAt.getFullYear()
+  const formattedCreatedAt = createdDay + '.' + createdMonth + '.' + createdYear
 
   const [mode, setMode] = React.useState('desktop')
 
@@ -62,7 +63,7 @@ const SEOPreview = () => {
               <div className="seo-description">
                 <TruncateMarkup lines={mode == 'desktop' ? 2 : 4}>
                   <span>
-                    <span className="date">{formattedDate} — </span>
+                    <span className="date">{formattedCreatedAt} — </span>
                     {siblingData.seoDescription}
                   </span>
                 </TruncateMarkup>
