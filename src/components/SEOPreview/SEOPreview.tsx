@@ -1,10 +1,12 @@
 import React from 'react'
 import { GoDeviceDesktop, GoDeviceMobile } from 'react-icons/go'
-import './styles.scss'
 import { getSiblingData, useAllFormFields } from 'payload/components/forms'
 import TruncateMarkup from 'react-truncate-markup'
 
+import './styles.scss'
+
 const SEOPreview = () => {
+  // get all form fields from the current form and get the data of the field with the key 'seoTitle'
   const [fields] = useAllFormFields()
   const siblingData = getSiblingData(fields, 'seoTitle')
 
@@ -16,6 +18,7 @@ const SEOPreview = () => {
   const createdYear = createdAt.getFullYear()
   const formattedCreatedAt = createdDay + '.' + createdMonth + '.' + createdYear
 
+  // set the default mode to 'desktop' and create a state to change the mode
   const [mode, setMode] = React.useState('desktop')
 
   return (
