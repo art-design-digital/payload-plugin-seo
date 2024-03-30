@@ -4,7 +4,7 @@ export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
     staticURL: '/media',
-    staticDir: 'media',
+    staticDir: '../media',
     imageSizes: [
       {
         name: 'thumbnail',
