@@ -3,7 +3,10 @@ import type { Config, Plugin } from 'payload/config'
 import { defaultPluginOptions, PluginOptionsTypes } from './types'
 import {
   CollapsibleField,
+  CollectionConfig,
   Field,
+  ImageSize,
+  IncomingUploadType,
   TextareaField,
   TextField,
   UIField,
@@ -120,10 +123,10 @@ export const seoPlugin =
             relationTo: pluginOptions.mediaCollection,
             admin: {
               description: {
-                de: 'Das SEO-Bild ist das Bild, das in den Suchergebnissen angezeigt wird oder wenn Ihre Seite geteilt wird. Es sollte 1200x630 Pixel groß sein.',
-                en: 'The SEO image is the image that appears in the search results or when your page is shared. It should be 1200x630 pixels in size.',
-                fr: "L'image SEO est l'image qui apparaît dans les résultats de recherche ou lorsque votre page est partagée. Elle doit mesurer 1200x630 pixels.",
-                es: 'La imagen SEO es la imagen que aparece en los resultados de búsqueda o cuando se comparte su página. Debería tener un tamaño de 1200x630 píxeles.',
+                de: 'Das SEO-Bild ist das Bild, das in den Suchergebnissen angezeigt wird oder wenn Ihre Seite geteilt wird. Es sollte 1200x630 Pixel groß sein, um alle Plattformen möglichst gut abzudecken.',
+                en: 'The SEO image is the image that appears in the search results or when your page is shared. It should be 1200x630 pixels to cover all platforms as well as possible.',
+                fr: "L'image SEO est l'image qui apparaît dans les résultats de recherche ou lorsque votre page est partagée. Elle devrait faire 1200x630 pixels pour couvrir toutes les plateformes aussi bien que possible.",
+                es: 'La imagen SEO es la imagen que aparece en los resultados de búsqueda o cuando se comparte su página. Debería tener 1200x630 píxeles para cubrir todas las plataformas lo mejor posible.',
               },
             },
           } as UploadField,
@@ -131,10 +134,30 @@ export const seoPlugin =
       },
     ]
 
+    // Define the SEO image size if the plugin is enabled
+    const seoImageSize: ImageSize = { name: 'seo', width: 1200, height: 630, position: 'centre' }
+
     return {
       ...config,
       collections:
         config.collections?.map(collection => {
+          // If the collection is the media collection, add the SEO image size to the collection
+          if (collection.slug === pluginOptions.mediaCollection) {
+            const updatedImageSizes: ImageSize[] = [
+              ...((collection?.upload as IncomingUploadType)?.imageSizes || []),
+              ...[seoImageSize],
+            ]
+
+            return {
+              ...collection,
+              upload:
+                {
+                  ...((collection?.upload || {}) as object),
+                  imageSizes: updatedImageSizes,
+                } || false,
+            }
+          }
+
           // If the collection is not included in the plugin options, return the collection as is
           const collectionIsIncluded = pluginOptions.collections?.includes(collection.slug)
           if (!collectionIsIncluded) return collection

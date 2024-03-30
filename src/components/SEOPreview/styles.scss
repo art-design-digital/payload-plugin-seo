@@ -131,6 +131,15 @@ $google-light-description-color: #4d5156;
               width: 100%;
               height: 100%;
             }
+
+            .seo-image-error {
+              width: 100%;
+              height: 100%;
+              font-size: 80%;
+              line-height: 1.3;
+              padding: 0.5rem;
+              background-color: var(--color-error-600);
+            }
           }
         }
       }
@@ -201,6 +210,15 @@ $google-light-description-color: #4d5156;
               object-position: center;
               width: 100%;
               height: 100%;
+            }
+
+            .seo-image-error {
+              width: 100%;
+              height: 100%;
+              font-size: 80%;
+              line-height: 1.3;
+              padding: 0.5rem;
+              background-color: var(--color-error-600);
             }
           }
         }

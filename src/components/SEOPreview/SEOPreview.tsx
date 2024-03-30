@@ -16,6 +16,32 @@ const SEOPreview = () => {
   const siblingData = getSiblingData(fields, 'seoTitle')
 
   const [mode, setMode] = React.useState('desktop')
+  const [imageURL, setImageURL] = React.useState<{ errors: boolean; data: string }>({
+    errors: false,
+    data: '',
+  })
+
+  // get the image from the backend
+  const getImage = React.useCallback(async (id: string) => {
+    const res = await fetch(`${process.env.PAYLOAD_PUBLIC_BACKEND_URL}/api/media/${id}`)
+    const image = await res.json()
+    console.log(image)
+    if (image.errors) {
+      setImageURL({ errors: true, data: image?.errors[0].message })
+    } else {
+      setImageURL({ errors: false, data: image?.sizes?.seo?.url })
+    }
+  }, [])
+
+  // if the siblingData.meta.image changes, call the getImage function
+  // if the siblingData.meta.image is unset, set the imageURL state to an empty string
+  React.useEffect(() => {
+    if (siblingData.seoImage) {
+      getImage(siblingData.seoImage)
+    } else {
+      setImageURL({ errors: false, data: '' })
+    }
+  }, [siblingData.seoImage])
 
   return (
     <div className="seo-preview">
@@ -45,9 +71,9 @@ const SEOPreview = () => {
                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcBAMAAACAI8KnAAAAKlBMVEUTExMBAQErKyuDg4OdnZ3////c3NxERER0dHT09PS3t7eurq6+vr5nZ2feHuO4AAAAc0lEQVR4AWMgAzCi8pQFkXkioekCCJ7E1NDQhXC+eGooEBjC+JyhIBBWCFNsCuZHw6QFl4L5qLoRXEZhCBfOF0ORFZBC0euIzBU4ehCJK+gaisRl7AzF4GIqXggzWCgVyEXyscRGmRmCSMEhICuIFnakAwDByyXqkwRNSwAAAABJRU5ErkJggg=="
               />
               <div className="site">
-                <span className="site-name">beispiel.de</span>
+                <span className="site-name">{process.env.PAYLOAD_PUBLIC_SITE_NAME}</span>
                 <span className="site-url">
-                  https://www.beispiel.de › eine › wirklich-tolle › url ...
+                  {process.env.PAYLOAD_PUBLIC_FRONTEND_URL} › eine › wirklich-tolle › url ...
                 </span>
               </div>
             </div>
@@ -70,10 +96,11 @@ const SEOPreview = () => {
 
               {siblingData.seoImage && mode == 'mobile' && (
                 <div className="seo-image-wrapper">
-                  <img
-                    src="https://images.pexels.com/photos/20669092/pexels-photo-20669092/free-photo-of-landschaft-natur-menschen-feld.jpeg"
-                    className="seo-image"
-                  />
+                  {imageURL?.errors ? (
+                    <div className="seo-image-error">{imageURL.data}</div>
+                  ) : (
+                    <img src={imageURL.data} className="seo-image" />
+                  )}
                 </div>
               )}
             </div>
@@ -82,10 +109,11 @@ const SEOPreview = () => {
           {siblingData.seoImage && mode == 'desktop' && (
             <div className="right">
               <div className="seo-image-wrapper">
-                <img
-                  src="https://images.pexels.com/photos/20669092/pexels-photo-20669092/free-photo-of-landschaft-natur-menschen-feld.jpeg"
-                  className="seo-image"
-                />
+                {imageURL?.errors ? (
+                  <div className="seo-image-error">{imageURL.data}</div>
+                ) : (
+                  <img src={imageURL.data} className="seo-image" />
+                )}
               </div>
             </div>
           )}
