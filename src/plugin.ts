@@ -148,6 +148,7 @@ export const seoPlugin =
               ...[seoImageSize],
             ]
 
+            // Return the collection with the updated image sizes
             return {
               ...collection,
               upload:

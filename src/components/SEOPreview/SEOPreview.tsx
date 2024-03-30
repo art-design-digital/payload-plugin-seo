@@ -25,7 +25,6 @@ const SEOPreview = () => {
   const getImage = React.useCallback(async (id: string) => {
     const res = await fetch(`${process.env.PAYLOAD_PUBLIC_BACKEND_URL}/api/media/${id}`)
     const image = await res.json()
-    console.log(image)
     if (image.errors) {
       setImageURL({ errors: true, data: image?.errors[0].message })
     } else {
