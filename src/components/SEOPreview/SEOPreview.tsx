@@ -10,6 +10,8 @@ const SEOPreview = () => {
   // get all form fields from the current form and get the data of the field with the key 'seoTitle'
   const [fields] = useAllFormFields()
   const siblingData = getSiblingData(fields, 'seoTitle')
+
+  // get the current theme
   const { theme } = useTheme()
 
   // get siblingData.updatedAt which is in format like "2024-03-27T20:32:47.101Z"
@@ -22,19 +24,32 @@ const SEOPreview = () => {
 
   // set the default mode to 'desktop' and create a state to change the mode
   const [mode, setMode] = React.useState('desktop')
+
+  // create a state to store the image URL and errors
   const [imageURL, setImageURL] = React.useState<{ errors: boolean; data: string }>({
     errors: false,
     data: '',
   })
 
-  // get the image from the backend
+  /**
+   * Function to get the image from the backend by the id of the image and set the imageURL state
+   * @param {string} id - the id of the image
+   * @returns {Promise<void>}
+   */
   const getImage = React.useCallback(async (id: string) => {
-    const res = await fetch(`${process.env.PAYLOAD_PUBLIC_BACKEND_URL}/api/media/${id}`)
-    const image = await res.json()
-    if (image.errors) {
-      setImageURL({ errors: true, data: image?.errors[0].message })
-    } else {
-      setImageURL({ errors: false, data: image?.sizes?.seo?.url })
+    try {
+      const res = await fetch(`${process.env.PAYLOAD_PUBLIC_BACKEND_URL}/api/media/${id}`)
+      const image = await res.json()
+      if (image.errors) {
+        setImageURL({ errors: true, data: image?.errors[0].message })
+      } else {
+        setImageURL({ errors: false, data: image?.sizes?.seo?.url })
+      }
+    } catch (error) {
+      setImageURL({
+        errors: true,
+        data: 'Server-Fehler ist aufgetreten. ENV-Datei checken oder später erneut probieren',
+      })
     }
   }, [])
 
