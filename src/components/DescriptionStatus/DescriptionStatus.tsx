@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Label, useField } from 'payload/components/forms'
-import './styles.scss'
+import { ProgressLabel } from './styles'
 
 type DescriptionStatusProps = {
   htmlFor: string
@@ -28,19 +28,14 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
       : '#d63031'
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-      }}
-    >
+    <ProgressLabel>
       <Label label={label} required={required} htmlFor={htmlFor} />
-      <div className="progress-wrapper">
-        <div className="progress-wrapper__inner">
-          <span className="progress-wrapper__text">{currentLength} von 155-160 Zeichen</span>
-          <div className="progress-wrapper__bar">
+      <div className="progressWrapper">
+        <div className="progressWrapper__inner">
+          <span className="progressWrapper__text">{currentLength} von 155-160 Zeichen</span>
+          <div className="progressWrapper__bar">
             <span
-              className="progress-wrapper__bar__fill"
+              className="progressWrapper__bar__fill"
               style={{
                 width: `${currentLengthPercentage}%`,
                 backgroundColor: fillColor,
@@ -49,7 +44,7 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
           </div>
         </div>
       </div>
-    </div>
+    </ProgressLabel>
   )
 }
 

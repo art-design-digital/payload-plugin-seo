@@ -3,7 +3,7 @@ import { GoDeviceDesktop, GoDeviceMobile } from 'react-icons/go'
 import { getSiblingData, useAllFormFields } from 'payload/components/forms'
 import TruncateMarkup from 'react-truncate-markup'
 
-import './styles.scss'
+import './SEOPreview.module.scss'
 
 const SEOPreview = () => {
   // get all form fields from the current form and get the data of the field with the key 'seoTitle'
