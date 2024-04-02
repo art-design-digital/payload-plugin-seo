@@ -1,14 +1,16 @@
 import React from 'react'
 import { GoDeviceDesktop, GoDeviceMobile } from 'react-icons/go'
 import { getSiblingData, useAllFormFields } from 'payload/components/forms'
+import { useTheme } from 'payload/components/utilities'
 import TruncateMarkup from 'react-truncate-markup'
 
-import './SEOPreview.module.scss'
+import { SEOPreviewSC } from './styles'
 
 const SEOPreview = () => {
   // get all form fields from the current form and get the data of the field with the key 'seoTitle'
   const [fields] = useAllFormFields()
   const siblingData = getSiblingData(fields, 'seoTitle')
+  const { theme } = useTheme()
 
   // get siblingData.updatedAt which is in format like "2024-03-27T20:32:47.101Z"
   // and format it to "27.03.2024"
@@ -47,7 +49,7 @@ const SEOPreview = () => {
   }, [siblingData.seoImage])
 
   return (
-    <div className="seo-preview">
+    <SEOPreviewSC $dark={theme == 'dark'}>
       <div className="actions">
         <button
           className={mode == 'desktop' ? 'active' : ''}
@@ -122,7 +124,7 @@ const SEOPreview = () => {
           )}
         </div>
       </div>
-    </div>
+    </SEOPreviewSC>
   )
 }
 

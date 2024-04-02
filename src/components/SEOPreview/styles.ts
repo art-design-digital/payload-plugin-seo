@@ -1,29 +1,8 @@
-$max-width-desktop: 652px;
+import styled from 'styled-components'
 
-$google-dark-bg: #202124;
-
-$google-dark-favicon-border-color: #9aa0a6;
-$google-dark-sitename-color: #dadce0;
-$google-dark-url-color: #bdc1c6;
-
-$google-dark-title-color: #8ab4f8;
-$google-dark-date-color: #9aa0a6;
-$google-dark-description-color: #bdc1c6;
-
-$google-light-bg: #ffffff;
-
-$google-light-favicon-border-color: #dadce0;
-$google-light-sitename-color: #202124;
-$google-light-url-color: #4d5156;
-
-$google-light-title-color: #1a0dab;
-$google-light-date-color: #4d5156;
-$google-light-description-color: #4d5156;
-
-
-
-.seo-preview {
+export const SEOPreviewSC = styled.div<{ $dark?: boolean }>`
   margin-bottom: var(--spacing-field);
+
   .actions {
     width: max-content;
     display: flex;
@@ -56,10 +35,35 @@ $google-light-description-color: #4d5156;
     padding: 1rem;
     border: 1px solid var(--theme-elevation-150);
     width: max-content;
+    background-color: ${props => (props.$dark ? '#202124' : '#ffffff')};
+
+    .header {
+      .favicon {
+        border-color: ${props => (props.$dark ? '#9aa0a6' : '#dadce0')};
+      }
+      .site-name {
+        color: ${props => (props.$dark ? '#dadce0' : '#202124')};
+      }
+      .site-url {
+        color: ${props => (props.$dark ? '#bdc1c6' : '#4d5156')};
+      }
+    }
+
+    .seo-title {
+      color: ${props => (props.$dark ? '#8ab4f8' : '#1a0dab')};
+    }
+
+    .seo-description {
+      color: ${props => (props.$dark ? '#bdc1c6' : '#4d5156')};
+
+      .date {
+        color: ${props => (props.$dark ? '#9aa0a6' : '#4d5156')};
+      }
+    }
 
     &.desktop {
       .inner-body {
-        max-width: $max-width-desktop;
+        max-width: 652px;
         display: flex;
         gap: 20px;
 
@@ -225,72 +229,4 @@ $google-light-description-color: #4d5156;
       }
     }
   }
-}
-
-html[data-theme=dark] {
-  .seo-preview {
-    .content {
-      background-color: $google-dark-bg;
-
-      .header {
-        .favicon {
-          border-color: $google-dark-favicon-border-color;
-        }
-
-        .site-name {
-          color: $google-dark-sitename-color;
-        }
-
-        .site-url {
-          color: $google-dark-url-color;
-        }
-      }
-
-      .seo-title {
-        color: $google-dark-title-color;
-      }
-
-      .seo-description {
-        color: $google-dark-description-color;
-
-        .date {
-          color: $google-dark-date-color;
-        }
-      }
-    }
-  }
-}
-
-html[data-theme=light] {
-  .seo-preview {
-    .content {
-      background-color: $google-light-bg;
-
-      .header {
-        .favicon {
-          border-color: $google-light-favicon-border-color;
-        }
-
-        .site-name {
-          color: $google-light-sitename-color;
-        }
-
-        .site-url {
-          color: $google-light-url-color;
-        }
-      }
-
-      .seo-title {
-        color: $google-light-title-color;
-      }
-
-      .seo-description {
-        color: $google-light-description-color;
-
-        .date {
-          color: $google-light-date-color;
-        }
-      }
-    }
-  }
-}
+`
