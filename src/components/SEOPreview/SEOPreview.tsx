@@ -16,7 +16,7 @@ const SEOPreview = () => {
 
   // get siblingData.updatedAt which is in format like "2024-03-27T20:32:47.101Z"
   // and format it to "27.03.2024"
-  const createdAt = new Date(siblingData.createdAt)
+  const createdAt = new Date(siblingData.createdAt || new Date())
   const createdDay = String(createdAt.getDate()).padStart(2, '0')
   const createdMonth = String(createdAt.getMonth() + 1).padStart(2, '0')
   const createdYear = createdAt.getFullYear()
@@ -100,7 +100,7 @@ const SEOPreview = () => {
 
             <div className="seo-title">
               <TruncateMarkup lines={mode == 'desktop' ? 1 : 2}>
-                <span>{siblingData.seoTitle}</span>
+                <span>{siblingData.seoTitle || <em>Kein SEO-Titel vorhanden</em>}</span>
               </TruncateMarkup>
             </div>
 
@@ -109,7 +109,12 @@ const SEOPreview = () => {
                 <TruncateMarkup lines={mode == 'desktop' ? 2 : 4}>
                   <span>
                     <span className="date">{formattedCreatedAt} — </span>
-                    {siblingData.seoDescription}
+                    {siblingData.seoDescription || (
+                      <em>
+                        Keine Meta-Beschreibung vorhanden. Bitte fügen Sie eine hinzu, um die
+                        Klickrate dieser Seite zu erhöhen.
+                      </em>
+                    )}
                   </span>
                 </TruncateMarkup>
               </div>
