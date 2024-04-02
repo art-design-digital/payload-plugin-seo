@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Label, useField } from 'payload/components/forms'
-import { ProgressLabel } from './styles'
+import { ProgressLabelSC } from './styles'
 
 type DescriptionStatusProps = {
   htmlFor: string
@@ -28,7 +28,7 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
       : '#d63031'
 
   return (
-    <ProgressLabel>
+    <ProgressLabelSC>
       <Label label={label} required={required} htmlFor={htmlFor} />
       <div className="progressWrapper">
         <div className="progressWrapper__inner">
@@ -44,7 +44,7 @@ const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps)
           </div>
         </div>
       </div>
-    </ProgressLabel>
+    </ProgressLabelSC>
   )
 }
 

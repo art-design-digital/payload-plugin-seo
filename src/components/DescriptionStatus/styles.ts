@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ProgressLabel = styled.div`
+export const ProgressLabelSC = styled.div`
   display: flex;
   justify-content: space-between;
   .progressWrapper {
