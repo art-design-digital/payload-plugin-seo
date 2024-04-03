@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { GoDeviceDesktop, GoDeviceMobile } from 'react-icons/go'
 import { getSiblingData, useAllFormFields } from 'payload/components/forms'
@@ -6,7 +8,7 @@ import TruncateMarkup from 'react-truncate-markup'
 
 import { SEOPreviewSC } from './styles'
 
-const SEOPreview = () => {
+const SEOPreview: React.FC = () => {
   // get all form fields from the current form and get the data of the field with the key 'seoTitle'
   const [fields] = useAllFormFields()
   const siblingData = getSiblingData(fields, 'seoTitle')

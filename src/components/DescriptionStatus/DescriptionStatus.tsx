@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 
 import { Label, useField } from 'payload/components/forms'
@@ -9,7 +11,11 @@ type DescriptionStatusProps = {
   required: boolean
 }
 
-const DescriptionStatus = ({ htmlFor, label, required }: DescriptionStatusProps) => {
+const DescriptionStatus: React.FC<DescriptionStatusProps> = ({
+  htmlFor,
+  label,
+  required,
+}: DescriptionStatusProps) => {
   const { value, setValue }: { value: string; setValue: (value: string) => void } = useField({
     path: 'seoDescription',
   })

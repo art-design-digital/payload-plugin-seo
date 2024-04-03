@@ -169,5 +169,29 @@ export const seoPlugin =
             fields: [...(collection?.fields || []), ...seoFields],
           }
         }) || [],
+      i18n: {
+        ...config.i18n,
+        resources: {
+          ...deepmerge(
+            {
+              de: {
+                seoPlugin: {
+                  seoTitle: 'SEO-Titel',
+                  seoDescription: 'SEO-Beschreibung',
+                  seoImage: 'SEO-Bild',
+                },
+              },
+              en: {
+                seoPlugin: {
+                  seoTitle: 'SEO Title',
+                  seoDescription: 'SEO Description',
+                  seoImage: 'SEO Image',
+                },
+              },
+            },
+            config.i18n?.resources || {},
+          ), // Add default empty object as fallback
+        },
+      },
     }
   }

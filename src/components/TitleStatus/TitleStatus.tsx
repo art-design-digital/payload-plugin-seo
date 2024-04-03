@@ -1,4 +1,6 @@
-import React, { useEffect, useRef } from 'react'
+'use client'
+
+import React from 'react'
 
 import { Label, useField } from 'payload/components/forms'
 import { ProgressLabelSC } from './styles'
@@ -9,7 +11,11 @@ type TitleStatusProps = {
   required: boolean
 }
 
-const TitleStatus = ({ htmlFor, label, required }: TitleStatusProps) => {
+const TitleStatus: React.FC<TitleStatusProps> = ({
+  htmlFor,
+  label,
+  required,
+}: TitleStatusProps) => {
   const { value, setValue }: { value: string; setValue: (value: string) => void } = useField({
     path: 'seoTitle',
   })
@@ -26,6 +32,8 @@ const TitleStatus = ({ htmlFor, label, required }: TitleStatusProps) => {
       : currentLength >= 45 && currentLength <= 65
       ? '#f1c40f'
       : '#d63031'
+
+  //console.log(i18n.language)
 
   return (
     <ProgressLabelSC>

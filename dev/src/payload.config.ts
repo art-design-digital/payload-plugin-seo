@@ -50,6 +50,10 @@ export default buildConfig({
     url: process.env.DATABASE_URI,
   }),
 
+  i18n: {
+    debug: true,
+  },
+
   localization: {
     locales: [
       {
