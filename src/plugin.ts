@@ -65,7 +65,7 @@ export const seoPlugin =
             name: 'seoTitle',
             required: true,
             minLength: 10,
-            localized: false,
+            localized: true,
             label: {
               de: 'SEO-Titel',
               en: 'SEO Title',
