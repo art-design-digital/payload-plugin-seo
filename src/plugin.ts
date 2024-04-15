@@ -169,29 +169,17 @@ export const seoPlugin =
             fields: [...(collection?.fields || []), ...seoFields],
           }
         }) || [],
-      i18n: {
-        ...config.i18n,
-        resources: {
-          ...deepmerge(
-            {
-              de: {
-                seoPlugin: {
-                  seoTitle: 'SEO-Titel',
-                  seoDescription: 'SEO-Beschreibung',
-                  seoImage: 'SEO-Bild',
-                },
-              },
-              en: {
-                seoPlugin: {
-                  seoTitle: 'SEO Title',
-                  seoDescription: 'SEO Description',
-                  seoImage: 'SEO Image',
-                },
-              },
-            },
-            config.i18n?.resources || {},
-          ), // Add default empty object as fallback
-        },
-      },
+      globals:
+        config.globals?.map(global => {
+          // If the global is not included in the plugin options, return the global as is
+          const globalIsIncluded = pluginOptions.globals?.includes(global.slug)
+          if (!globalIsIncluded) return global
+
+          // If the global is included in the plugin options, add the SEO fields to the global
+          return {
+            ...global,
+            fields: [...(global?.fields || []), ...seoFields],
+          }
+        }) || [],
     }
   }

@@ -9,6 +9,7 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 
 // @ts-ignore - This file doesn't exist in the project, but it's fine for the example
 import { seoPlugin } from '../../src/index'
+import DemoGlobal from './globals/DemoGlobal'
 
 export default buildConfig({
   admin: {
@@ -32,6 +33,7 @@ export default buildConfig({
   },
   editor: slateEditor({}),
   collections: [Examples, Users, Media],
+  globals: [DemoGlobal],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
@@ -44,15 +46,12 @@ export default buildConfig({
       collections: ['examples'],
       generateSEOTitleFrom: 'someField',
       mediaCollection: 'media',
+      globals: ['demo-global'],
     }),
   ],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),
-
-  i18n: {
-    debug: true,
-  },
 
   localization: {
     locales: [

@@ -19,6 +19,12 @@ export const defaultPluginOptions: PluginOptionsTypes = {
   collections: [],
 
   /**
+   * Globals to apply the plugin to
+   * @default []
+   */
+  globals: [],
+
+  /**
    * Generate title from field
    * @default 'title'
    */
@@ -39,6 +45,12 @@ export interface PluginOptionsTypes {
    * @default []
    */
   collections: string[]
+
+  /**
+   * Globals to apply the plugin to
+   * @default []
+   */
+  globals?: string[]
 
   /**
    * Generate title from field
