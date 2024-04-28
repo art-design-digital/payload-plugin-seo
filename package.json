@@ -1,6 +1,6 @@
 {
   "name": "@art-design-digital/payload-plugin-seo",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "homepage:": "",
   "repository": "",
   "description": "A Payload plugin for SEO. This plugin adds SEO fields to your collections and documents. It also provides a helper function to generate meta tags for your site.",
