@@ -41,6 +41,7 @@ export default buildConfig({
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
   plugins: [
+    // @ts-ignore - This file doesn't exist in the project, but it's fine for the example
     seoPlugin({
       enabled: true,
       collections: ['examples'],

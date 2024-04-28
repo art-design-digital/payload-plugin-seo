@@ -7,6 +7,7 @@ import {
   Field,
   ImageSize,
   IncomingUploadType,
+  RowField,
   TextareaField,
   TextField,
   UIField,
@@ -60,6 +61,7 @@ export const seoPlugin =
               },
             },
           } as UIField,
+
           {
             type: 'text',
             name: 'seoTitle',
@@ -130,6 +132,103 @@ export const seoPlugin =
               },
             },
           } as UploadField,
+          {
+            type: 'row',
+            fields: [
+              {
+                type: 'select',
+                name: 'seoAllowIndexing',
+                label: {
+                  de: 'Indexierung erlauben',
+                  en: 'Allow Indexing',
+                  fr: "Autoriser l'indexation",
+                  es: 'Permitir indexación',
+                },
+                admin: {
+                  style: {
+                    width: '50%',
+                  },
+                  description: {
+                    de: 'Wählen Sie, ob Suchmaschinen diese Seite indexieren dürfen oder nicht.',
+                    en: 'Choose whether search engines should be allowed to index this page or not.',
+                    fr: 'Choisissez si les moteurs de recherche doivent être autorisés à indexer cette page ou non.',
+                    es: 'Elija si los motores de búsqueda deben tener permiso para indexar esta página o no.',
+                  },
+                },
+                defaultValue: 'index',
+                options: [
+                  {
+                    label: {
+                      de: 'Ja',
+                      en: 'Yes',
+                      fr: 'Oui',
+                      es: 'Sí',
+                    },
+                    value: 'index',
+                  },
+                  {
+                    label: { de: 'Nein', en: 'No', fr: 'Non', es: 'No' },
+                    value: 'noindex',
+                  },
+                ],
+              },
+              {
+                type: 'select',
+                name: 'seoAllowFollwing',
+                label: {
+                  de: 'Links folgen erlauben',
+                  en: 'Allow Following Links',
+                  fr: 'Autoriser le suivi des liens',
+                  es: 'Permitir seguir enlaces',
+                },
+                admin: {
+                  style: {
+                    width: '50%',
+                  },
+                  description: {
+                    de: 'Wählen Sie, ob Suchmaschinen den Links auf dieser Seite folgen dürfen oder nicht.',
+                    en: 'Choose whether search engines should be allowed to follow the links on this page or not.',
+                    fr: 'Choisissez si les moteurs de recherche doivent être autorisés à suivre les liens de cette page ou non.',
+                    es: 'Elija si los motores de búsqueda deben tener permiso para seguir los enlaces de esta página o no.',
+                  },
+                },
+                defaultValue: 'follow',
+                options: [
+                  {
+                    label: {
+                      de: 'Ja',
+                      en: 'Yes',
+                      fr: 'Oui',
+                      es: 'Sí',
+                    },
+                    value: 'follow',
+                  },
+                  {
+                    label: { de: 'Nein', en: 'No', fr: 'Non', es: 'No' },
+                    value: 'nofollow',
+                  },
+                ],
+              },
+            ],
+          } as RowField,
+          {
+            type: 'text',
+            name: 'seoAdditionalRobotsTags',
+            label: {
+              de: 'Zusätzliche Robots-Tags',
+              en: 'Additional Robots Tags',
+              fr: 'Balises Robots supplémentaires',
+              es: 'Etiquetas Robots Adicionales',
+            },
+            admin: {
+              description: {
+                de: 'Fügen Sie hier zusätzliche Robots-Tags hinzu, die Suchmaschinen beim Crawlen dieser Seite beachten sollen. Zum Beispiel: noarchive, nosnippet, notranslate, etc.',
+                en: 'Add additional robots tags here that search engines should consider when crawling this page. For example: noarchive, nosnippet, notranslate, etc.',
+                fr: 'Ajoutez ici des balises robots supplémentaires que les moteurs de recherche doivent prendre en compte lors du crawl de cette page. Par exemple: noarchive, nosnippet, notranslate, etc.',
+                es: 'Agregue etiquetas robots adicionales aquí que los motores de búsqueda deben considerar al rastrear esta página. Por ejemplo: noarchive, nosnippet, notranslate, etc.',
+              },
+            },
+          },
         ],
       },
     ]
