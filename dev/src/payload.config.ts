@@ -46,6 +46,8 @@ export default buildConfig({
     seoPlugin({
       enabled: true,
       collections: ['examples', 'some-collection'],
+      globals: ['demo-global'],
+      mediaCollection: 'media',
       generateSEOTitleFrom: 'someField',
       insertBefore: {
         globals: [
@@ -65,8 +67,6 @@ export default buildConfig({
           },
         ],
       },
-      mediaCollection: 'media',
-      globals: ['demo-global'],
     }),
   ],
   db: mongooseAdapter({
