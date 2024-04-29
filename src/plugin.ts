@@ -174,7 +174,7 @@ export const seoPlugin =
               },
               {
                 type: 'select',
-                name: 'seoAllowFollwing',
+                name: 'seoAllowFollowing',
                 label: {
                   de: 'Links folgen erlauben',
                   en: 'Allow Following Links',
