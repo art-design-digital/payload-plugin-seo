@@ -1,8 +1,8 @@
 import { CollectionConfig } from 'payload/types'
 
 // Example Collection - For reference only, this must be added to payload.config.ts to be used.
-const Examples: CollectionConfig = {
-  slug: 'examples',
+const SomeCollection: CollectionConfig = {
+  slug: 'some-collection',
   admin: {
     useAsTitle: 'someField',
   },
@@ -11,16 +11,16 @@ const Examples: CollectionConfig = {
   },
   fields: [
     {
-      name: 'someField',
+      name: 'niceField',
       type: 'text',
       localized: true,
     },
     {
-      name: 'anotherField',
+      name: 'nicerField',
       type: 'text',
       localized: true,
     },
   ],
 }
 
-export default Examples
+export default SomeCollection

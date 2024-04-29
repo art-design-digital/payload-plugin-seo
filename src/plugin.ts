@@ -62,7 +62,6 @@ export const seoPlugin =
               },
             },
           } as UIField,
-
           {
             type: 'text',
             name: 'seoTitle',
@@ -231,165 +230,172 @@ export const seoPlugin =
             },
           } as TextField,
           {
-            type: 'select',
-            name: 'seoFrequency',
-            label: {
-              de: 'Änderungshäufigkeit',
-              en: 'Change Frequency',
-              fr: 'Fréquence de changement',
-              es: 'Frecuencia de cambio',
-            },
-            admin: {
-              description: {
-                de: 'Wählen Sie, wie häufig sich der Inhalt dieser Seite ändert.',
-                en: 'Choose how frequently the content of this page changes.',
-                fr: 'Choisissez à quelle fréquence le contenu de cette page change.',
-                es: 'Elija con qué frecuencia cambia el contenido de esta página.',
-              },
-            },
-            defaultValue: 'weekly',
-            options: [
+            type: 'row',
+            fields: [
               {
+                type: 'select',
+                name: 'seoFrequency',
                 label: {
-                  de: 'Immer',
-                  en: 'Always',
-                  fr: 'Toujours',
-                  es: 'Siempre',
+                  de: 'Änderungshäufigkeit',
+                  en: 'Change Frequency',
+                  fr: 'Fréquence de changement',
+                  es: 'Frecuencia de cambio',
                 },
-                value: 'always',
-              },
+                admin: {
+                  width: '50%',
+                  description: {
+                    de: 'Wählen Sie, wie häufig sich der Inhalt dieser Seite ändert.',
+                    en: 'Choose how frequently the content of this page changes.',
+                    fr: 'Choisissez à quelle fréquence le contenu de cette page change.',
+                    es: 'Elija con qué frecuencia cambia el contenido de esta página.',
+                  },
+                },
+                defaultValue: 'weekly',
+                options: [
+                  {
+                    label: {
+                      de: 'Immer',
+                      en: 'Always',
+                      fr: 'Toujours',
+                      es: 'Siempre',
+                    },
+                    value: 'always',
+                  },
+                  {
+                    label: {
+                      de: 'Stündlich',
+                      en: 'Hourly',
+                      fr: 'Toutes les heures',
+                      es: 'Por hora',
+                    },
+                    value: 'hourly',
+                  },
+                  {
+                    label: {
+                      de: 'Täglich',
+                      en: 'Daily',
+                      fr: 'Quotidien',
+                      es: 'Diario',
+                    },
+                    value: 'daily',
+                  },
+                  {
+                    label: {
+                      de: 'Wöchentlich',
+                      en: 'Weekly',
+                      fr: 'Hebdomadaire',
+                      es: 'Semanal',
+                    },
+                    value: 'weekly',
+                  },
+                  {
+                    label: {
+                      de: 'Monatlich',
+                      en: 'Monthly',
+                      fr: 'Mensuel',
+                      es: 'Mensual',
+                    },
+                    value: 'monthly',
+                  },
+                  {
+                    label: {
+                      de: 'Jährlich',
+                      en: 'Yearly',
+                      fr: 'Annuel',
+                      es: 'Anual',
+                    },
+                    value: 'yearly',
+                  },
+                  {
+                    label: {
+                      de: 'Nie',
+                      en: 'Never',
+                      fr: 'Jamais',
+                      es: 'Nunca',
+                    },
+                    value: 'never',
+                  },
+                ],
+              } as SelectField,
               {
+                type: 'select',
+                name: 'seoPriority',
                 label: {
-                  de: 'Stündlich',
-                  en: 'Hourly',
-                  fr: 'Toutes les heures',
-                  es: 'Por hora',
+                  de: 'Priorität',
+                  en: 'Priority',
+                  fr: 'Priorité',
+                  es: 'Prioridad',
                 },
-                value: 'hourly',
-              },
-              {
-                label: {
-                  de: 'Täglich',
-                  en: 'Daily',
-                  fr: 'Quotidien',
-                  es: 'Diario',
+                admin: {
+                  width: '50%',
+                  description: {
+                    de: 'Wählen Sie die Priorität dieser Seite im Vergleich zu anderen Seiten auf Ihrer Website.',
+                    en: 'Choose the priority of this page compared to other pages on your site.',
+                    fr: 'Choisissez la priorité de cette page par rapport aux autres pages de votre site.',
+                    es: 'Elija la prioridad de esta página en comparación con otras páginas de su sitio.',
+                  },
                 },
-                value: 'daily',
-              },
-              {
-                label: {
-                  de: 'Wöchentlich',
-                  en: 'Weekly',
-                  fr: 'Hebdomadaire',
-                  es: 'Semanal',
-                },
-                value: 'weekly',
-              },
-              {
-                label: {
-                  de: 'Monatlich',
-                  en: 'Monthly',
-                  fr: 'Mensuel',
-                  es: 'Mensual',
-                },
-                value: 'monthly',
-              },
-              {
-                label: {
-                  de: 'Jährlich',
-                  en: 'Yearly',
-                  fr: 'Annuel',
-                  es: 'Anual',
-                },
-                value: 'yearly',
-              },
-              {
-                label: {
-                  de: 'Nie',
-                  en: 'Never',
-                  fr: 'Jamais',
-                  es: 'Nunca',
-                },
-                value: 'never',
-              },
+                defaultValue: '0.5',
+                options: [
+                  {
+                    label: {
+                      de: '0.1 (Niedrigste Priorität)',
+                      en: '0.1 (Lowest Priority)',
+                      fr: '0.1 (Priorité la plus basse)',
+                      es: '0.1 (Prioridad más baja)',
+                    },
+                    value: '0.1',
+                  },
+                  {
+                    label: '0.2',
+                    value: '0.2',
+                  },
+                  {
+                    label: '0.3',
+                    value: '0.3',
+                  },
+                  {
+                    label: '0.4',
+                    value: '0.4',
+                  },
+                  {
+                    label: {
+                      de: '0.5 (Standard)',
+                      en: '0.5 (Default)',
+                      fr: '0.5 (Défaut)',
+                      es: '0.5 (Predeterminado)',
+                    },
+                    value: '0.5',
+                  },
+                  {
+                    label: '0.6',
+                    value: '0.6',
+                  },
+                  {
+                    label: '0.7',
+                    value: '0.7',
+                  },
+                  {
+                    label: '0.8',
+                    value: '0.8',
+                  },
+                  {
+                    label: '0.9',
+                    value: '0.9',
+                  },
+                  {
+                    label: {
+                      de: '1.0 (Höchste Priorität)',
+                      en: '1.0 (Highest Priority)',
+                      fr: '1.0 (Priorité la plus élevée)',
+                      es: '1.0 (Prioridad más alta)',
+                    },
+                    value: '1.0',
+                  },
+                ],
+              } as SelectField,
             ],
-          } as SelectField,
-          {
-            type: 'select',
-            name: 'seoPriority',
-            label: {
-              de: 'Priorität',
-              en: 'Priority',
-              fr: 'Priorité',
-              es: 'Prioridad',
-            },
-            admin: {
-              description: {
-                de: 'Wählen Sie die Priorität dieser Seite im Vergleich zu anderen Seiten auf Ihrer Website.',
-                en: 'Choose the priority of this page compared to other pages on your site.',
-                fr: 'Choisissez la priorité de cette page par rapport aux autres pages de votre site.',
-                es: 'Elija la prioridad de esta página en comparación con otras páginas de su sitio.',
-              },
-            },
-            defaultValue: '0.5',
-            options: [
-              {
-                label: {
-                  de: '0.1 (Niedrigste Priorität)',
-                  en: '0.1 (Lowest Priority)',
-                  fr: '0.1 (Priorité la plus basse)',
-                  es: '0.1 (Prioridad más baja)',
-                },
-                value: '0.1',
-              },
-              {
-                label: '0.2',
-                value: '0.2',
-              },
-              {
-                label: '0.3',
-                value: '0.3',
-              },
-              {
-                label: '0.4',
-                value: '0.4',
-              },
-              {
-                label: {
-                  de: '0.5 (Standard)',
-                  en: '0.5 (Default)',
-                  fr: '0.5 (Défaut)',
-                  es: '0.5 (Predeterminado)',
-                },
-                value: '0.5',
-              },
-              {
-                label: '0.6',
-                value: '0.6',
-              },
-              {
-                label: '0.7',
-                value: '0.7',
-              },
-              {
-                label: '0.8',
-                value: '0.8',
-              },
-              {
-                label: '0.9',
-                value: '0.9',
-              },
-              {
-                label: {
-                  de: '1.0 (Höchste Priorität)',
-                  en: '1.0 (Highest Priority)',
-                  fr: '1.0 (Priorité la plus élevée)',
-                  es: '1.0 (Prioridad más alta)',
-                },
-                value: '1.0',
-              },
-            ],
-          },
+          } as RowField,
         ],
       },
     ]
@@ -423,11 +429,28 @@ export const seoPlugin =
           const collectionIsIncluded = pluginOptions.collections?.includes(collection.slug)
           if (!collectionIsIncluded) return collection
 
-          // If the collection is included in the plugin options, add the SEO fields to the collection
-          return {
+          // check if the collection slug is in the insertBefore collections and return value of the the prop 'field' if it is
+          const insertBeforeField = pluginOptions.insertBefore?.collections?.find(
+            (insertBeforeCollection: { slug: string; field: string }) =>
+              insertBeforeCollection.slug === collection.slug,
+          )?.field
+
+          const someFieldIndex = collection.fields.findIndex(
+            field => (field as any)['name'] === insertBeforeField || '',
+          )
+
+          const updatedCollection = {
             ...collection,
             fields: [...(collection?.fields || []), ...seoFields],
           }
+
+          if (someFieldIndex > -1) {
+            const fields = updatedCollection.fields
+            const lastField = fields.pop()
+            if (lastField) fields.splice(someFieldIndex, 0, lastField)
+          }
+
+          return updatedCollection
         }) || [],
       globals:
         config.globals?.map(global => {
@@ -435,11 +458,28 @@ export const seoPlugin =
           const globalIsIncluded = pluginOptions.globals?.includes(global.slug)
           if (!globalIsIncluded) return global
 
-          // If the global is included in the plugin options, add the SEO fields to the global
-          return {
+          // check if the collection slug is in the insertBefore collections and return value of the the prop 'field' if it is
+          const insertBeforeField = pluginOptions.insertBefore?.globals?.find(
+            (insertBeforeCollection: { slug: string; field: string }) =>
+              insertBeforeCollection.slug === global.slug,
+          )?.field
+
+          const someFieldIndex = global.fields.findIndex(
+            field => (field as any)['name'] === insertBeforeField || '',
+          )
+
+          const updatedGlobal = {
             ...global,
             fields: [...(global?.fields || []), ...seoFields],
           }
+
+          if (someFieldIndex > -1) {
+            const fields = updatedGlobal.fields
+            const lastField = fields.pop()
+            if (lastField) fields.splice(someFieldIndex, 0, lastField)
+          }
+
+          return updatedGlobal
         }) || [],
     }
   }

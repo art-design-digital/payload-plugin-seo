@@ -10,6 +10,7 @@ import { slateEditor } from '@payloadcms/richtext-slate'
 // @ts-ignore - This file doesn't exist in the project, but it's fine for the example
 import { seoPlugin } from '../../src/index'
 import DemoGlobal from './globals/DemoGlobal'
+import SomeCollection from './collections/SomeCollection'
 
 export default buildConfig({
   admin: {
@@ -32,7 +33,7 @@ export default buildConfig({
     },
   },
   editor: slateEditor({}),
-  collections: [Examples, Users, Media],
+  collections: [Examples, Users, Media, SomeCollection],
   globals: [DemoGlobal],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -44,8 +45,26 @@ export default buildConfig({
     // @ts-ignore - This file doesn't exist in the project, but it's fine for the example
     seoPlugin({
       enabled: true,
-      collections: ['examples'],
+      collections: ['examples', 'some-collection'],
       generateSEOTitleFrom: 'someField',
+      insertBefore: {
+        globals: [
+          {
+            slug: 'demo-global',
+            field: 'description',
+          },
+        ],
+        collections: [
+          {
+            slug: 'examples',
+            field: 'anotherField',
+          },
+          {
+            slug: 'some-collection',
+            field: 'niceField',
+          },
+        ],
+      },
       mediaCollection: 'media',
       globals: ['demo-global'],
     }),

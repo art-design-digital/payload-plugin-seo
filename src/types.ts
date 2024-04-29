@@ -30,7 +30,17 @@ export const defaultPluginOptions: PluginOptionsTypes = {
    */
   generateSEOTitleFrom: 'title',
 
+  /**
+   * The media collection to use for the SEO image
+   * @default 'medias'
+   */
   mediaCollection: 'medias',
+
+  /**
+   * Insert before the field
+   * @default {}
+   */
+  insertBefore: {},
 }
 
 export interface PluginOptionsTypes {
@@ -63,4 +73,19 @@ export interface PluginOptionsTypes {
    * @default 'medias'
    */
   mediaCollection: string
+
+  /**
+   * Insert before the field
+   * @default {}
+   */
+  insertBefore?: {
+    globals?: {
+      slug: string
+      field: string
+    }[]
+    collections?: {
+      slug: string
+      field: string
+    }[]
+  }
 }
